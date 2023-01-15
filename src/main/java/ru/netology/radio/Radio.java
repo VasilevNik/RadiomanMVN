@@ -50,6 +50,7 @@ public class Radio {
             currentRadioStation = 0;
         }
     }
+
     public void prev() {
         if (currentRadioStation > 0) {
             currentRadioStation--;
@@ -63,6 +64,7 @@ public class Radio {
             currentSoundLevel++;
         }
     }
+
     public void volumeMinus() {
         if (currentSoundLevel > 0) {
             currentSoundLevel--;
