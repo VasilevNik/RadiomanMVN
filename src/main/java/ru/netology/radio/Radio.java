@@ -2,18 +2,36 @@ package ru.netology.radio;
 
 public class Radio {
 
+    private int maxRadioStation = 9;
+    private int minRadioStation = 0;
+    private int numberOfRadioStation = 10;
+    private int minVolume = 0;
+    private int maxVolume = 100;
     private int currentRadioStation;
     private int currentSoundLevel;
 
+    public Radio(int numberOfRadioStation) {
+        this.numberOfRadioStation = numberOfRadioStation - 1;
+    }
+
+    public Radio() {
+
+    }
+
+    public int getNumberOfRadioStation() {
+        return numberOfRadioStation;
+    }
+
     public int getCurrentRadioStation() {
+
         return currentRadioStation;
     }
 
     public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation > 9) {
+        if (currentRadioStation > maxRadioStation) {
             return;
         }
-        if (currentRadioStation < 0) {
+        if (currentRadioStation < minRadioStation) {
             return;
         }
         this.currentRadioStation = currentRadioStation;
@@ -24,49 +42,49 @@ public class Radio {
     }
 
     public void setCurrentSoundLevel(int currentSoundLevel) {
-        if (currentSoundLevel < 0) {
+        if (currentSoundLevel < minVolume) {
             return;
         }
-        if (currentSoundLevel > 10) {
+        if (currentSoundLevel > maxVolume) {
             return;
         }
         this.currentSoundLevel = currentSoundLevel;
     }
 
     public void setChangeRadioStation(int changeRadioStation) {
-        if (changeRadioStation > 9) {
+        if (changeRadioStation > maxRadioStation) {
             return;
         }
-        if (changeRadioStation < 0) {
-            return;
+        if (changeRadioStation < minRadioStation) {
+            changeRadioStation = minRadioStation;
         }
         this.currentRadioStation = changeRadioStation;
     }
 
     public void next() {
-        if (currentRadioStation < 9) {
+        if (currentRadioStation < maxRadioStation) {
             currentRadioStation++;
         } else {
-            currentRadioStation = 0;
+            currentRadioStation = minRadioStation;
         }
     }
 
     public void prev() {
-        if (currentRadioStation > 0) {
+        if (currentRadioStation > minRadioStation) {
             currentRadioStation--;
         } else {
-            currentRadioStation = 9;
+            currentRadioStation = maxRadioStation;
         }
     }
 
     public void volumePlus() {
-        if (currentSoundLevel < 10) {
+        if (currentSoundLevel < maxVolume) {
             currentSoundLevel++;
         }
     }
 
     public void volumeMinus() {
-        if (currentSoundLevel > 0) {
+        if (currentSoundLevel > minVolume) {
             currentSoundLevel--;
         }
     }
