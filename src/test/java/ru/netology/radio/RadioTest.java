@@ -179,7 +179,7 @@ public class RadioTest {
     }
 
     @Test
-    public void changeRadioStationToNumberNumberZero() {
+    public void changeRadioStationToNumberZero() {
         Radio radio = new Radio();
 
         radio.setChangeRadioStation(0);
@@ -215,9 +215,9 @@ public class RadioTest {
     public void shouldSetSoundLevel() {
         Radio radio = new Radio();
 
-        radio.setCurrentSoundLevel(5);
+        radio.setCurrentSoundLevel(50);
 
-        int expected = 5;
+        int expected = 50;
         int actual = radio.getCurrentSoundLevel();
         Assertions.assertEquals(expected, actual);
     }
@@ -256,32 +256,32 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetSoundLevelBelowTen() {
+    public void shouldSetSoundLevelBelowHundred() {
         Radio radio = new Radio();
 
-        radio.setCurrentSoundLevel(9);
+        radio.setCurrentSoundLevel(99);
 
-        int expected = 9;
+        int expected = 99;
         int actual = radio.getCurrentSoundLevel();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldSetSoundLevelTen() {
+    public void shouldSetSoundLevelHundred() {
         Radio radio = new Radio();
 
-        radio.setCurrentSoundLevel(10);
+        radio.setCurrentSoundLevel(100);
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentSoundLevel();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void shouldSetSoundLevelAboveTen() {
+    public void shouldSetSoundLevelAboveHundred() {
         Radio radio = new Radio();
 
-        radio.setCurrentSoundLevel(11);
+        radio.setCurrentSoundLevel(101);
 
         int expected = 0;
         int actual = radio.getCurrentSoundLevel();
@@ -292,37 +292,37 @@ public class RadioTest {
     public void increaseTheVolume() {
         Radio radio = new Radio();
 
-        radio.setCurrentSoundLevel(5);
+        radio.setCurrentSoundLevel(50);
 
         radio.volumePlus();
 
-        int expected = 6;
+        int expected = 51;
         int actual = radio.getCurrentSoundLevel();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void increaseTheVolumeAboveTen() {
+    public void increaseTheVolumeAboveHundred() {
         Radio radio = new Radio();
 
-        radio.setCurrentSoundLevel(10);
+        radio.setCurrentSoundLevel(100);
 
         radio.volumePlus();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentSoundLevel();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void increaseTheVolumeFromNine() {
+    public void increaseTheVolumeFromNinetyNine() {
         Radio radio = new Radio();
 
-        radio.setCurrentSoundLevel(9);
+        radio.setCurrentSoundLevel(99);
 
         radio.volumePlus();
 
-        int expected = 10;
+        int expected = 100;
         int actual = radio.getCurrentSoundLevel();
         Assertions.assertEquals(expected, actual);
     }
@@ -331,11 +331,11 @@ public class RadioTest {
     public void loweringTheVolume() {
         Radio radio = new Radio();
 
-        radio.setCurrentSoundLevel(5);
+        radio.setCurrentSoundLevel(50);
 
         radio.volumeMinus();
 
-        int expected = 4;
+        int expected = 49;
         int actual = radio.getCurrentSoundLevel();
         Assertions.assertEquals(expected, actual);
     }
@@ -364,5 +364,13 @@ public class RadioTest {
         int expected = 0;
         int actual = radio.getCurrentSoundLevel();
         Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setTheLastRadioStation() {
+        Radio radio = new Radio(10);
+
+        Assertions.assertEquals(9, radio.getNumberOfRadioStation());
+
     }
 }
